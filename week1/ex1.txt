@@ -1,0 +1,12 @@
+x-window-manager
+x-session-manager
+xman
+update-manager
+pod2man
+mkmanifest
+man-recode
+manpath
+mandb
+man
+gpu-manager
+catman
