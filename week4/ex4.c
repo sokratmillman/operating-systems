@@ -7,10 +7,15 @@
 int main()
 {
 	char command[128];
-	while(true)
-	{printf(">>");
-	fgets(command, 128, stdin);
-	system(command);}
+	int pid = fork();
+	
+		while(true) {
+		    /*printf("pid=%d; n=%d", getpid(), n);*/
+		    if (pid == 0){
+		    printf(">>");
+		    fgets(command, 128, stdin);
+		    system(command);}
+		}
 	return 0;
 }
-/*creating a line with command, using system() to execute in background*/
+/*creating a line with command, using fork() and system() to execute in background. program executes in a */
