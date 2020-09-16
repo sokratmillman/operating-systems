@@ -2,12 +2,12 @@
 #include <pthread.h>
 #include <stdlib.h>
 
-#define SIZE 10000
+#define SIZE 20
 long long int t; //counter
 int product[SIZE]; //product that is produced by producer and consumed by consumer
 int pos; //positipn in the array
 int consSleep, prodSleep; // "bool" variables for restarting producer and consumer
-pthread_t thread_producer, thread_consumer;
+
 
 void* produce(void*u) //producer function
 {
@@ -30,22 +30,29 @@ void* produce(void*u) //producer function
 
 void* consume(void*v)
 {
-	int j = 0;
 	while(1){
-		while(product==0);//Wait until buffer is not empty
-		if(j%1000==0)
-			printf("Consumer %d step %d\n",j,product);//Output number of taken product and the size of buffer
-		if(product>0){//Take product
-			j++;
-			product--;
+		if (consSleep)
+			continue;
+		if (pos==0){
+			consSleep = 1;
+			prodSleep = 0;
+			continue;
 		}
+		printf("%d ", product[pos]);
+		pos--;
 	}
+	pthread_exit(NULL);
+	return NULL;
 }
 
 int main(void)
-{
+{	
+	pthread_t thread_producer, thread_consumer;
+	consSleep=1;
 	pthread_create(&thread_producer,NULL,&produce,NULL);
 	pthread_create(&thread_consumer,NULL,&consume,NULL);
-	pthread_join(thread_producer,NULL);
+	while(1);
+	//stopped after 2414688 time was done 
 	return 0;
 }
+//each output starting from the 'bignumber'-th iteration may be incorrect, because producer and consumer try to use the same input (array) without blocking it -> they can change it. in some time it will lead to incorrect output, when consumer stores the old value while producer already changed it; this is so-called race condition.
