@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+   3545	    624	      8	   4177	   1051	program
