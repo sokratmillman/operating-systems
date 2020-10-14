@@ -1,0 +1,4 @@
+In order to minimize hit/miss ratio we need to have a sequence of different references, i.e. 1-2-3-4-...-n, for example. If these numbers don't repeat, each time will be miss.
+In order to maximize hit/miss ratio we need to have a sequence od as many repeated numbers as possible, i.e. 2-2-2-2-...2, for example. In this particular case, hit/miss ratio would be (n-1)/n, where n is number of 2's, as one miss will happen.
+1) Differet numbers -> minimal ratio
+2)Same numbers -> maximal ratio
