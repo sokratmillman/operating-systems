@@ -1,0 +1,29 @@
+1)Remove execute permission for everybody:
+
+chmod 666 _ex3.txt
+ls -l _ex3.txt >> ex3.txt
+Result:
+-rw-rw-rw- 1 superstepashka superstepashka 0 окт 21 21:15 _ex3.txt
+
+2)Grant all permissions to owner and others (not group):
+
+chmod 707 _ex3.txt
+ls -l _ex3.txt >> ex3.txt
+Result:
+-rwx---rwx 1 superstepashka superstepashka 0 окт 21 21:15 _ex3.txt
+
+3)Make group permissions equal to user permissions:
+
+chmod g=u _ex3.txt
+ls -l _ex3.txt >> ex3.txt
+Result:
+-rwxrwxrwx 1 superstepashka superstepashka 0 окт 21 21:15 _ex3.txt
+
+What does 660 mean? Group and user cannot execute, others don't have any permissions
+-rw-rw---- 1 superstepashka superstepashka 210 окт 21 21:42 ex3.txt
+
+What does 775 mean? Group and user are 'almighty', others cannot write to the file
+-rwxrwxr-x 1 superstepashka superstepashka 281 окт 21 21:43 ex3.txt
+
+Whaat does 777 mean? Everybody have all the permissions
+-rwxrwxrwx 1 superstepashka superstepashka 352 окт 21 21:44 ex3.txt

@@ -1,0 +1,3 @@
+Inodenumber: 3680235
+file1
+link1

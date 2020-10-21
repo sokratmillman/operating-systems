@@ -1,0 +1,3 @@
+2766193 file.txt
+/home/superstepashka/operating-systems/week10/_ex2.txt
+/home/superstepashka/operating-systems/week1/file.txt
