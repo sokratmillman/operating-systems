@@ -1,0 +1,9 @@
+1)Hello
+  Hello
+
+2)Hello
+  
+  
+This difference takes place due to buffering mechanism. 
+In the first program, where there is no "\n" at the end of "Hello", buffer is not reset. As child process and parent process share memory, they have the same buffer which contains "Hello" -> it is printed twice. 
+\n symbol flusnes buffer, and that's why only parent process prints "Hello", then the buffer is cleared, and then child and parent processes print \n(buffer is empty)
